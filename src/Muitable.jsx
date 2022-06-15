@@ -22,18 +22,20 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import { visuallyHidden } from '@mui/utils';
 
-function createData(name, calories, fat, carbs, protein) {
+function createData( staffid,   username, phoneno, idno, roleid,  role, lastlogin) {
   return {
-    name,
-    calories,
-    fat,
-    carbs,
-    protein,
+    staffid,
+    username,
+    phoneno,
+    idno,
+    roleid,
+    role,
+    lastlogin,
   };
 }
 
 const rows = [
-  createData('Cupcake', 305, 3.7, 67, 4.3),
+  createData('134560', 'KENNEDY SIMBIA', '+254 723 984 234', '12579636','PK-1','Super Admin', '05TH MAY 2022 14:56:45'),
   createData('Donut', 452, 25.0, 51, 4.9),
   createData('Eclair', 262, 16.0, 24, 6.0),
   createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
@@ -80,35 +82,53 @@ function stableSort(array, comparator) {
 
 const headCells = [
   {
-    id: 'name',
+    id: 'staffid',
+    numeric: true,
+    disablePadding: true,
+    label: 'STAFF ID',
+  },
+  {
+    id: 'username',
     numeric: false,
     disablePadding: true,
-    label: 'Dessert (100g serving)',
+    label: 'USER NAME',
   },
   {
-    id: 'calories',
+    id: 'phonenumber',
     numeric: true,
     disablePadding: false,
-    label: 'Calories',
+    label: 'PHONE NUMBER',
   },
   {
-    id: 'fat',
+    id: 'idnumber',
     numeric: true,
     disablePadding: false,
-    label: 'Fat (g)',
+    label: 'ID NUMBER',
   },
   {
-    id: 'carbs',
+    id: 'roleid',
     numeric: true,
     disablePadding: false,
-    label: 'Carbs (g)',
+    label: 'ROLE ID',
   },
   {
-    id: 'protein',
-    numeric: true,
+    id: 'role',
+    numeric: false,
     disablePadding: false,
-    label: 'Protein (g)',
+    label: 'ROLE',
   },
+  {
+    id: 'lastlogin',
+    numeric: false,
+    disablePadding: false,
+    label: 'LAST LOGIN',
+  },
+  // {
+  //   id: 'action',
+  //   numeric: true,
+  //   disablePadding: false,
+  //   label: 'ACTION',
+  // },
 ];
 
 function EnhancedTableHead(props) {
@@ -331,18 +351,15 @@ export default function Muitable() {
                           }}
                         />
                       </TableCell>
-                      <TableCell
-                        component="th"
-                        id={labelId}
-                        scope="row"
-                        padding="none"
-                      >
-                        {row.name}
-                      </TableCell>
-                      <TableCell align="right">{row.calories}</TableCell>
-                      <TableCell align="right">{row.fat}</TableCell>
-                      <TableCell align="right">{row.carbs}</TableCell>
-                      <TableCell align="right">{row.protein}</TableCell>
+                     
+                      <TableCell align="right">{row.staffid}</TableCell>
+                      <TableCell align="right">{row.username}</TableCell>
+                      <TableCell align="right">{row.phoneno}</TableCell>
+                      <TableCell align="right">{row.idno}</TableCell>
+                      <TableCell align="right">{row.roleid}</TableCell>
+                      <TableCell align="right">{row.role}</TableCell>
+                      <TableCell align="right">{row.lastlogin}</TableCell>
+                      {/* <TableCell align="right">{row.action}</TableCell> */}
                     </TableRow>
                   );
                 })}
@@ -352,7 +369,7 @@ export default function Muitable() {
                     height: (dense ? 33 : 53) * emptyRows,
                   }}
                 >
-                  <TableCell colSpan={6} />
+                  <TableCell colSpan={7} />
                 </TableRow>
               )}
             </TableBody>
